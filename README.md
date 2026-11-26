@@ -34,6 +34,31 @@ bars: **course name**, **test number** and **time left**, for example `MAT1203 (
 3. Long-press your home screen → *Widgets* → **Test countdown**, and place it. It can be resized,
    and the bars redraw to fit.
 
+## Install (no Android Studio needed)
+
+Download the latest `TestCountdown-vX.Y.Z.apk` from the
+[Releases page](../../releases), open it on your phone, and allow
+"install unknown apps" when Android asks. Requires Android 8.0+.
+
+## Making a release
+
+Push a version tag and GitHub Actions builds, tests and publishes the APK as a Release:
+
+```bash
+git tag v1.0.1
+git push origin v1.0.1
+```
+
+By default the APK is signed with a throwaway debug key, which changes every build, so you
+have to uninstall the old version before installing a new one (your saved tests are lost).
+To keep updates seamless, sign with your own key once:
+
+1. `keytool -genkeypair -v -keystore release.jks -alias testcountdown -keyalg RSA -keysize 2048 -validity 10000`
+2. In the repo on GitHub: *Settings → Secrets and variables → Actions*, add
+   `RELEASE_KEYSTORE_BASE64` (output of `base64 -w0 release.jks`), `RELEASE_KEYSTORE_PASSWORD`,
+   `RELEASE_KEY_ALIAS` (`testcountdown`) and `RELEASE_KEY_PASSWORD`.
+3. Keep `release.jks` safe and never commit it.
+
 ## Building
 
 Requirements: Android Studio (or JDK 17+ and the Android SDK, API 35).
