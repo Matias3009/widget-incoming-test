@@ -44,13 +44,6 @@ class ExamWidgetProvider : AppWidgetProvider() {
         private fun updateWidget(context: Context, manager: AppWidgetManager, appWidgetId: Int) {
             val views = RemoteViews(context.packageName, R.layout.widget_layout)
 
-            // Header like "3 tests" / "3 pruebas" (refreshed with every update).
-            val count = ExamRepository(context).getUpcoming().size
-            views.setTextViewText(
-                R.id.header,
-                if (count == 0) context.getString(R.string.widget_title)
-                else context.resources.getQuantityString(R.plurals.widget_count, count, count),
-            )
 
             // Scrollable list, filled by ExamWidgetService.
             val serviceIntent = Intent(context, ExamWidgetService::class.java).apply {
@@ -60,13 +53,12 @@ class ExamWidgetProvider : AppWidgetProvider() {
             views.setRemoteAdapter(R.id.exam_list, serviceIntent)
             views.setEmptyView(R.id.exam_list, R.id.empty_view)
 
-            // Tapping the header, the empty text or any row opens the app.
+            // Tapping the empty text or any row opens the app.
             val open = Intent(context, MainActivity::class.java)
             val openPending = PendingIntent.getActivity(
                 context, 0, open,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
             )
-            views.setOnClickPendingIntent(R.id.header, openPending)
             views.setOnClickPendingIntent(R.id.empty_view, openPending)
             val template = PendingIntent.getActivity(
                 context, 1, open,

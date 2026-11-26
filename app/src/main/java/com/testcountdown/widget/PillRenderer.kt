@@ -43,11 +43,11 @@ object PillRenderer {
         val pad = 14 * density
 
         val labelPaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
-            textSize = 16 * density
+            textSize = (heightDp * 0.44f).coerceIn(14f, 17f) * density
             typeface = Typeface.create("sans-serif-medium", Typeface.NORMAL)
         }
         val timePaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
-            textSize = 16 * density
+            textSize = (heightDp * 0.44f).coerceIn(14f, 17f) * density
             typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
             this.color = TEXT_ON_PILL
         }

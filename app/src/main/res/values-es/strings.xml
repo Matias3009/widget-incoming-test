@@ -3,16 +3,9 @@
     <string name="app_name">Cuenta regresiva</string>
     <string name="widget_name">Cuenta regresiva de pruebas</string>
     <string name="widget_description">Tiempo que falta para tus próximas pruebas</string>
-    <string name="widget_title">Sin pruebas</string>
-    <plurals name="widget_count">
-        <item quantity="one">%d prueba</item>
-        <item quantity="many">%d pruebas</item>
-        <item quantity="other">%d pruebas</item>
-    </plurals>
     <string name="widget_empty">No hay pruebas próximas.\nToca para agregar una.</string>
     <string name="app_empty">Aún no hay pruebas.\nToca \"Agregar prueba\".</string>
 
-    <string name="preview_title">3 pruebas</string>
 
     <string name="less_time_bigger">Menos tiempo = barra más grande</string>
     <string name="less_time_bigger_hint">Activado: la prueba más cercana tiene la barra más larga. Desactivado: la más cercana tiene la barra más corta.</string>

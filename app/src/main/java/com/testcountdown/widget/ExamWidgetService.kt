@@ -87,10 +87,8 @@ private class ExamViewsFactory(
         }
         if (heightDp <= 0) return DEFAULT_PILL_DP
 
-        // Must mirror widget_layout.xml: top padding 14dp, 16sp header (+4dp), bottom padding 10dp.
-        val fontScale = context.resources.configuration.fontScale
-        val headerDp = 14f + 16f * fontScale * 1.35f + 4f
-        val listDp = heightDp - headerDp - 10f - 2f // 2dp safety margin
+        // Must mirror widget_layout.xml: 12dp padding at the top and bottom.
+        val listDp = heightDp - 12f - 12f - 2f // 2dp safety margin
         val rows = (listDp / PREFERRED_ROW_DP).roundToInt().coerceAtLeast(1)
         val rowDp = (listDp / rows).coerceIn(MIN_ROW_DP, MAX_ROW_DP)
         return rowDp - ROW_PADDING_DP
@@ -98,7 +96,7 @@ private class ExamViewsFactory(
 
     private companion object {
         const val DEFAULT_PILL_DP = 38f
-        const val PREFERRED_ROW_DP = 47f
+        const val PREFERRED_ROW_DP = 42f
         const val MIN_ROW_DP = 36f
         const val MAX_ROW_DP = 54f
         const val ROW_PADDING_DP = 8f // widget_item.xml: 4dp top + 4dp bottom
