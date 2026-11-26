@@ -42,7 +42,8 @@ Download the latest `TestCountdown-vX.Y.Z.apk` from the
 
 ## Making a release
 
-Push a version tag and GitHub Actions builds, tests and publishes the APK as a Release:
+On GitHub: **Actions → Release APK → Run workflow**, type a new version (e.g. `v1.0.1`) and run it.
+GitHub Actions tests, builds and publishes the APK as a Release. Or push a tag yourself:
 
 ```bash
 git tag v1.0.1
