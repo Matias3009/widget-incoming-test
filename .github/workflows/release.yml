@@ -76,3 +76,6 @@ jobs:
             from your home screen's widget list.
 
             Requires Android 8.0 or newer.
+
+            **Xiaomi / HyperOS:** in the app's *App info*, turn on **Autostart** and set
+            **Battery saver → No restrictions** so the widget keeps refreshing.

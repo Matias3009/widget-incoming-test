@@ -42,6 +42,17 @@ Download the latest `TestCountdown-vX.Y.Z.apk` from the
 [Releases page](../../releases), open it on your phone, and allow
 "install unknown apps" when Android asks. Requires Android 8.0+.
 
+## Xiaomi / HyperOS tips
+
+HyperOS limits apps in the background, which can stop the widget from refreshing on time:
+
+1. Long-press the **Test Countdown** app icon → **App info**.
+2. Turn on **Autostart**.
+3. **Battery saver** → **No restrictions**.
+
+To add the widget: long-press the home screen → **Widgets**, then scroll down to the list of
+apps (or search "Test") and drag **Test countdown** onto the screen.
+
 ## Making a release
 
 On GitHub: **Actions → Release APK → Run workflow**, type a new version (e.g. `v1.0.1`) and run it.
