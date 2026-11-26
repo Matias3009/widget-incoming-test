@@ -63,15 +63,19 @@ git tag v1.0.1
 git push origin v1.0.1
 ```
 
-By default the APK is signed with a throwaway debug key, which changes every build, so you
-have to uninstall the old version before installing a new one (your saved tests are lost).
-To keep updates seamless, sign with your own key once:
+Every release must be signed with the **same key**, otherwise Android refuses to install it
+as an update ("package conflicts" / "faltan paquetes"). The workflow reads the key from these
+repository secrets (*Settings → Secrets and variables → Actions*) and refuses to publish without them:
 
-1. `keytool -genkeypair -v -keystore release.jks -alias testcountdown -keyalg RSA -keysize 2048 -validity 10000`
-2. In the repo on GitHub: *Settings → Secrets and variables → Actions*, add
-   `RELEASE_KEYSTORE_BASE64` (output of `base64 -w0 release.jks`), `RELEASE_KEYSTORE_PASSWORD`,
-   `RELEASE_KEY_ALIAS` (`testcountdown`) and `RELEASE_KEY_PASSWORD`.
-3. Keep `release.jks` safe and never commit it.
+| Secret | Value |
+|--------|-------|
+| `RELEASE_KEYSTORE_BASE64` | `base64 -w0 release.jks` |
+| `RELEASE_KEYSTORE_PASSWORD` | keystore password |
+| `RELEASE_KEY_ALIAS` | key alias |
+| `RELEASE_KEY_PASSWORD` | key password |
+
+To create a new key: `keytool -genkeypair -keystore release.jks -storetype PKCS12 -alias testcountdown -keyalg RSA -keysize 2048 -validity 10000`.
+Keep the key safe and never commit it.
 
 ## Building
 
