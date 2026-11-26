@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Test Countdown</string>
+    <string name="widget_name">Test countdown</string>
+    <string name="widget_description">Time left for your upcoming tests</string>
+    <string name="widget_title">Upcoming tests</string>
+    <string name="widget_empty">No upcoming tests.\nTap to add one.</string>
+    <string name="app_empty">No tests yet.\nTap \"Add test\" below.</string>
+
+    <string name="less_time_bigger">Less time left = bigger bar</string>
+    <string name="less_time_bigger_hint">On: the closest test has the longest bar. Off: the closest test has the shortest bar.</string>
+    <string name="scale_label">Bar scale (full range)</string>
+    <string name="scale_weeks">%d weeks</string>
+    <string name="tests_header">Tests (tap to edit, long-press to delete)</string>
+
+    <string name="add_test">Add test</string>
+    <string name="edit_test">Edit test</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="clear_finished">Remove finished</string>
+    <string name="hint_course">Course name (e.g. MAT1203)</string>
+    <string name="hint_number">Test number (e.g. 1)</string>
+    <string name="error_course">Enter a course name</string>
+    <string name="warning_past">That date has already passed, so it won\'t show on the widget.</string>
+    <string name="confirm_delete">Delete %s?</string>
+    <string name="finished_on">Finished · %s</string>
+</resources>
