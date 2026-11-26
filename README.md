@@ -5,7 +5,9 @@ bars: **course name**, **test number** and **time left**, for example `MAT1203 (
 
 ![preview](docs/preview.png)
 
-*(Preview drawn from the same rules as the app. Left: default mode. Right: the other bar mode.)*
+*(Mock-up drawn from the same rules as the app. Left: light theme, less time = bigger bar. Right: dark theme, less time = smaller bar.)*
+
+The look follows light launcher widgets (light grey card, large rounded corners, amber "3 tests" header) and switches to a dark card in dark mode. The app is in English and Spanish.
 
 ## How it works
 

@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/widget_bg"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:paddingStart="@dimen/widget_padding_h"
+    android:paddingTop="16dp"
+    android:paddingEnd="@dimen/widget_padding_h"
+    android:paddingBottom="10dp">
 
+    <!-- "3 tests" in amber, like the "3 tareas" header of the launcher's own widgets -->
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingBottom="4dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        android:paddingBottom="8dp"
         android:text="@string/widget_title"
-        android:textColor="#CCFFFFFF"
-        android:textSize="13sp"
-        android:textStyle="bold" />
+        android:textColor="@color/widget_title"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="18sp" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -28,7 +34,7 @@
             android:layout_height="match_parent"
             android:divider="@null"
             android:dividerHeight="0dp"
-            android:scrollbarStyle="outsideOverlay" />
+            android:scrollbars="none" />
 
         <TextView
             android:id="@+id/empty_view"
@@ -36,7 +42,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/widget_empty"
-            android:textColor="#B3FFFFFF"
-            android:textSize="14sp" />
+            android:textColor="@color/widget_text_secondary"
+            android:textSize="15sp" />
     </FrameLayout>
 </LinearLayout>

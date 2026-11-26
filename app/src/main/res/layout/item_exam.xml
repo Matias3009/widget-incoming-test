@@ -20,6 +20,6 @@
         android:layout_height="wrap_content"
         android:paddingStart="12dp"
         android:paddingTop="2dp"
-        android:textColor="#99FFFFFF"
+        android:textColor="@color/widget_text_secondary"
         android:textSize="12sp" />
 </LinearLayout>

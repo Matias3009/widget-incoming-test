@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cuenta regresiva</string>
+    <string name="widget_name">Cuenta regresiva de pruebas</string>
+    <string name="widget_description">Tiempo que falta para tus próximas pruebas</string>
+    <string name="widget_title">Sin pruebas</string>
+    <plurals name="widget_count">
+        <item quantity="one">%d prueba</item>
+        <item quantity="many">%d pruebas</item>
+        <item quantity="other">%d pruebas</item>
+    </plurals>
+    <string name="widget_empty">No hay pruebas próximas.\nToca para agregar una.</string>
+    <string name="app_empty">Aún no hay pruebas.\nToca \"Agregar prueba\".</string>
+
+    <string name="preview_title">3 pruebas</string>
+
+    <string name="less_time_bigger">Menos tiempo = barra más grande</string>
+    <string name="less_time_bigger_hint">Activado: la prueba más cercana tiene la barra más larga. Desactivado: la más cercana tiene la barra más corta.</string>
+    <string name="scale_label">Escala de la barra</string>
+    <string name="scale_weeks">%d semanas</string>
+    <string name="tests_header">Pruebas (toca para editar, mantén presionado para borrar)</string>
+
+    <string name="add_test">Agregar prueba</string>
+    <string name="edit_test">Editar prueba</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Borrar</string>
+    <string name="clear_finished">Quitar terminadas</string>
+    <string name="hint_course">Ramo (ej. MAT1203)</string>
+    <string name="hint_number">N° de prueba (ej. 1)</string>
+    <string name="error_course">Escribe el nombre del ramo</string>
+    <string name="warning_past">Esa fecha ya pasó, así que no aparecerá en el widget.</string>
+    <string name="confirm_delete">¿Borrar %s?</string>
+    <string name="finished_on">Terminada · %s</string>
+    <string name="time_left_description">%1$s: faltan %2$s</string>
+</resources>

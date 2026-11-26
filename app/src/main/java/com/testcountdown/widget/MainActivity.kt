@@ -207,7 +207,12 @@ class MainActivity : Activity() {
                 view.paddingLeft - view.paddingRight
             val rowWidth = if (width > 0) width else resources.displayMetrics.widthPixels - (64 * density).toInt()
             view.findViewById<ImageView>(R.id.pill)
-                .setImageBitmap(PillRenderer.render(exam, now, repo.settings, rowWidth, density))
+                .setImageBitmap(
+                    PillRenderer.render(
+                        exam, now, repo.settings, rowWidth, density,
+                        outsideTextColor = getColor(R.color.widget_text),
+                    )
+                )
             val date = DateFormat.getMediumDateFormat(this@MainActivity).format(exam.timeMillis) + "  " +
                 DateFormat.getTimeFormat(this@MainActivity).format(exam.timeMillis)
             view.findViewById<TextView>(R.id.date).text =

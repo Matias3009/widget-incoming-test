@@ -19,7 +19,7 @@ import android.text.TextUtils
  */
 object PillRenderer {
 
-    private const val TEXT_ON_PILL = 0xFF1B1B1B.toInt()
+    private const val TEXT_ON_PILL = 0xFF2B2B2B.toInt()
 
     fun render(
         exam: Exam,
@@ -27,9 +27,10 @@ object PillRenderer {
         settings: WidgetSettings,
         widthPx: Int,
         density: Float,
-        outsideTextColor: Int = 0xFFFFFFFF.toInt(),
+        /** Color for the course name when it is drawn beside the bar (the widget's text color). */
+        outsideTextColor: Int,
     ): Bitmap {
-        val heightPx = (36 * density).toInt()
+        val heightPx = (38 * density).toInt()
         val width = widthPx.coerceAtLeast((120 * density).toInt())
         val bitmap = Bitmap.createBitmap(width, heightPx, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
@@ -37,16 +38,15 @@ object PillRenderer {
         val left = exam.timeLeft(now)
         val color = Urgency.colorFor(left)
         val timeText = Urgency.formatTimeLeft(left)
-        val pad = 12 * density
-        val stroke = 1.5f * density
+        val pad = 14 * density
 
         val labelPaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
-            textSize = 15 * density
-            typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+            textSize = 16 * density
+            typeface = Typeface.create("sans-serif-medium", Typeface.NORMAL)
         }
         val timePaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
-            textSize = 15 * density
-            typeface = Typeface.create(Typeface.MONOSPACE, Typeface.BOLD)
+            textSize = 16 * density
+            typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
             this.color = TEXT_ON_PILL
         }
 
@@ -60,23 +60,17 @@ object PillRenderer {
             .coerceAtLeast(minPill)
             .coerceAtMost(width.toFloat())
 
-        // Pill with a horizontal gradient: a lighter tint on the left to the urgency color on the right.
-        val rect = RectF(stroke, stroke, pillWidth - stroke, heightPx - stroke)
+        // Pill with a soft horizontal gradient: a lighter tint on the left to the urgency color on the right.
+        val rect = RectF(0f, 0f, pillWidth, heightPx.toFloat())
         val radius = rect.height() / 2f
         val fill = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             shader = LinearGradient(
                 rect.left, 0f, rect.right, 0f,
-                Urgency.lerpColor(color, 0xFFFFFFFF.toInt(), 0.35f), color,
+                Urgency.lerpColor(color, 0xFFFFFFFF.toInt(), 0.40f), color,
                 Shader.TileMode.CLAMP,
             )
         }
         canvas.drawRoundRect(rect, radius, radius, fill)
-        val border = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            style = Paint.Style.STROKE
-            strokeWidth = stroke
-            this.color = Urgency.lerpColor(color, 0xFF000000.toInt(), 0.35f)
-        }
-        canvas.drawRoundRect(rect, radius, radius, border)
 
         val baseline = heightPx / 2f - (labelPaint.descent() + labelPaint.ascent()) / 2f
 

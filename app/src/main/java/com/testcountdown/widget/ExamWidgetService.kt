@@ -39,11 +39,16 @@ private class ExamViewsFactory(
     override fun getViewAt(position: Int): RemoteViews {
         val views = RemoteViews(context.packageName, R.layout.widget_item)
         val exam = exams.getOrNull(position) ?: return views
-        val density = context.resources.displayMetrics.density
-        val bitmap = PillRenderer.render(exam, now, settings, rowWidthPx(density), density)
+        val res = context.resources
+        val density = res.displayMetrics.density
+        val bitmap = PillRenderer.render(
+            exam, now, settings, rowWidthPx(density), density,
+            outsideTextColor = context.getColor(R.color.widget_text),
+        )
         views.setImageViewBitmap(R.id.pill, bitmap)
         views.setContentDescription(
-            R.id.pill, "${exam.label}: ${Urgency.formatTimeLeft(exam.timeLeft(now))} left",
+            R.id.pill,
+            res.getString(R.string.time_left_description, exam.label, Urgency.formatTimeLeft(exam.timeLeft(now))),
         )
         views.setOnClickFillInIntent(R.id.pill, Intent())
         return views
@@ -58,8 +63,9 @@ private class ExamViewsFactory(
         } else {
             options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_WIDTH)
         }.takeIf { it > 0 } ?: 250
-        // Minus the widget's inner padding (10dp on each side).
-        return ((widthDp - 20) * density).toInt()
+        // Minus the widget's inner padding on both sides.
+        val paddingPx = 2 * context.resources.getDimensionPixelSize(R.dimen.widget_padding_h)
+        return (widthDp * density).toInt() - paddingPx
     }
 
     override fun getLoadingView(): RemoteViews? = null

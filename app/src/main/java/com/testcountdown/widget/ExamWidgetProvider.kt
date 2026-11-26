@@ -44,6 +44,14 @@ class ExamWidgetProvider : AppWidgetProvider() {
         private fun updateWidget(context: Context, manager: AppWidgetManager, appWidgetId: Int) {
             val views = RemoteViews(context.packageName, R.layout.widget_layout)
 
+            // Header like "3 tests" / "3 pruebas" (refreshed with every update).
+            val count = ExamRepository(context).getUpcoming().size
+            views.setTextViewText(
+                R.id.header,
+                if (count == 0) context.getString(R.string.widget_title)
+                else context.resources.getQuantityString(R.plurals.widget_count, count, count),
+            )
+
             // Scrollable list, filled by ExamWidgetService.
             val serviceIntent = Intent(context, ExamWidgetService::class.java).apply {
                 putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)

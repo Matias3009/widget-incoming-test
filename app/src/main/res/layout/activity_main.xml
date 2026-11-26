@@ -68,7 +68,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@drawable/widget_bg"
-        android:padding="10dp">
+        android:paddingStart="@dimen/widget_padding_h"
+        android:paddingTop="10dp"
+        android:paddingEnd="@dimen/widget_padding_h"
+        android:paddingBottom="10dp">
 
         <ListView
             android:id="@+id/exam_list"
@@ -83,7 +86,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/app_empty"
-            android:textColor="#B3FFFFFF" />
+            android:textColor="@color/widget_text_secondary" />
     </FrameLayout>
 
     <LinearLayout
