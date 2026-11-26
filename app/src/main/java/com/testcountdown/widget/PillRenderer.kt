@@ -29,8 +29,10 @@ object PillRenderer {
         density: Float,
         /** Color for the course name when it is drawn beside the bar (the widget's text color). */
         outsideTextColor: Int,
+        /** Bar height; the widget picks it so its rows exactly fill the available height. */
+        heightDp: Float = 38f,
     ): Bitmap {
-        val heightPx = (38 * density).toInt()
+        val heightPx = (heightDp * density).toInt()
         val width = widthPx.coerceAtLeast((120 * density).toInt())
         val bitmap = Bitmap.createBitmap(width, heightPx, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
